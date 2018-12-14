@@ -12,13 +12,7 @@ class BookView extends Component {
         this.props.dispatch(clearBookWithReviewer())
     }
 
-    getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps.user.login.isAuth);
-        if (nextProps.user.login.isAuth === prevState.user.login.isAuth) {
-            console.log(nextProps.user.login.isAuth);
-            this.props.history.push('/user')
-        }
-    }
+  
 
 
     renderBook = (books) => (
@@ -57,6 +51,7 @@ class BookView extends Component {
     )
 
     render() {
+        console.log(this.props);
         let books = this.props.books;
         return (
             <div>

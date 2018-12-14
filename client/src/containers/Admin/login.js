@@ -8,23 +8,30 @@ class Login extends Component {
         email: '',
         password: '',
         error: '',
-        success: false
+        success: false,
+        redirectAction: {}
     }
 
     handleInputEmail = (event) => {
         this.setState({ email: event.target.value })
     }
-
     handleInputPassword = (event) => {
         this.setState({ password: event.target.value })
     }
 
+    componentDidUpdate(prevProps) {
+
+        if (prevProps !== this.props && this.props.user.login.isAuth)
+            this.props.history.push('/user')
+    }
+
     submitForm = (e) => {
         e.preventDefault();
-        this.props.dispatch(loginUser(this.state))       
+        this.props.dispatch(loginUser(this.state))
     }
 
     render() {
+        let user = this.props.user;
         return (
             <div className='rl_container'>
                 <form onSubmit={this.submitForm}>
@@ -47,6 +54,14 @@ class Login extends Component {
 
                         <button type="submit"> Login  </button>
 
+                        <div className="error">
+                            {
+                                user.login ?
+                                    <div>{user.login.message}</div>
+                                    : null
+                            }
+                        </div>
+
                     </div>
 
                 </form>
@@ -56,7 +71,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         user: state.user
     }
