@@ -5,3 +5,4 @@
 #npm i react-fontawesome@1.6.1 react-simple-sidenav@0.1.6 redux-thunk@2.2.0
 
 /node_modules
+/client/node_modules
