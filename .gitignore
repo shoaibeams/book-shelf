@@ -6,4 +6,4 @@
 
 /node_modules
 /client/node_modules
-/server/config/config.jsg
+/server/config/config.js
