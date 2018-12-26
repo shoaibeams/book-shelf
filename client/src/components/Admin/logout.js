@@ -1,20 +1,18 @@
-import React from 'react';
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
-const Logout = (props) => {
+const Logout = props => {
+  axios.get(`/api/logout`).then((request, status) => {
+    setTimeout(() => {
+      props.history.push("/");
+    }, 2000);
+  });
 
-    let request = axios.get(`/api/logout`)
-        .then((request,status) => {
-            setTimeout(() => {
-                props.history.push('/')
-            },2000)
-        })
-
-    return (
-        <div className="logout_container">
-            <h1> Sorry to see you go. :( </h1>
-        </div>
-    );
+  return (
+    <div className="logout_container">
+      <h1> Sorry to see you go. :( </h1>
+    </div>
+  );
 };
 
 export default Logout;
